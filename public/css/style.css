@@ -18,12 +18,30 @@
   --border: 1px solid var(--light-grey);
   --shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+  --text: #e2f4e9;
+  --background: #1c1c1c;
+  --primary: #9cdab5;
+  --secondary: #2b72fb;
+  --accent: #c08759;
 }
+
+/* :root {
+  --dark-grey: white;
+  --medium-grey: #f4f4f4;
+  --light-grey: #eeeeee;
+  --ash: #636363;
+  --primary-color: #2b72fb;
+  --white:#333333;
+  --border: 1px solid var(--light-grey);
+  --shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+} */
 
 body {
   font-family: inherit;
-  background-color: var(--white);
-  color: var(--dark-grey);
+  background-color: var(--background);
+  color: var(--text);
   letter-spacing: -0.4px;
 }
 
@@ -46,7 +64,7 @@ button {
 .btn {
   display: block;
   background-color: var(--primary-color);
-  color: var(--white);
+  color: var(--text);
   text-align: center;
   padding: 0.6rem 1.4rem;
   font-size: 1rem;
@@ -56,7 +74,7 @@ button {
 
 .icon {
   padding: 0.5rem;
-  background-color: var(--light-grey);
+  background-color: var(--primary);
   border-radius: 10px;
 }
 
@@ -79,7 +97,7 @@ button {
 
 .menu {
   position: relative;
-  background: var(--white);
+  background: var(--background);
 }
 
 .menu-bar li:first-child .dropdown {
@@ -126,7 +144,7 @@ button {
   display: flex;
   flex-direction: column;
   min-width: 230px;
-  background-color: var(--white);
+  background-color: --text;
   border-radius: 10px;
   position: absolute;
   top: 36px;
@@ -169,7 +187,7 @@ button {
 
 .dropdown-link p {
   font-size: 0.8rem;
-  color: var(--medium-grey);
+  color: var(--primary);
 }
 
 .right-container {
@@ -187,7 +205,7 @@ button {
 }
 
 .search input {
-  background-color: var(--ash);
+  background-color: var(--primary);
   border: none;
   border-radius: 6px;
   padding: 0.7rem;
@@ -551,67 +569,164 @@ svg {
 
 /* events */
 
+
+
+/* card */
+
+
 .card {
-  position: relative;
-  width: 300px;
-  height: 200px;
-  background-color: #f2f2f2;
+  width: 75%;
+  height: 150px;
+  background: #262626;
   border-radius: 10px;
+  border: 1px solid #3F3F40;
+}
+
+.ac {
+  text-decoration: none;
+}
+
+.cheader, cfooter, cmain {
+  display: flex;
+  align-items: center;
+}
+
+.cheader {
+  justify-content: space-between;
+  margin: 20px;
+  color: #BDBFB7;
+
+}
+
+.cheader p{
+  font-weight: 800;
+   color: #d9d9d9
+}
+
+.cheader .ac {
+  font-size: 15px;
+  cursor: pointer;
+  color: #BDBFB7
+}
+
+.cmain {
+  justify-content: flex-start;
+  margin: 20px;
+}
+
+.cmain p {
+  color: #BDBFB7;
+  font-weight: 400;
+}
+
+
+.cfooter {
+  margin: 20px;
+  font-size: 15px;
+  gap: 5px;
+}
+
+.cfooter .a1 {
+  color: #2CAD3D;
+  font-weight: 600;
+}
+
+.cfooter .a2 {
+  color: #ae922d;
+  font-weight: 600;
+}
+
+.cfooter .a3 {
+  color: #ae2d2d;
+  font-weight: 600;
+}
+
+.cfooter p {
+  color: white;
+}
+
+.con{
+  padding:10px;
+}
+
+.center1 {
+  display: flex;
+  height: 500px;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.center1 > *:not(:first-child) {
+  margin-top: 5px;
+}
+.paget{
+  padding:20px;
+}
+
+.title{
+  
+}
+.disc{
+  color: #757575;
+  font-size: 25px
+}
+
+/* dash form */
+
+.dform {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 30px 30px -30px rgba(27, 26, 26, 0.315);
+}
+
+. dform .title {
+  color: royalblue;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  line-height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  perspective: 1000px;
-  box-shadow: 0 0 0 5px #ffffff80;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card svg {
-  width: 48px;
-  fill: #333;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
-}
-
-.card__content {
-  position: absolute;
-  top: 0;
-  left: 0;
+.dform input {
+  outline: 0;
+  border: 1px solid rgb(219, 213, 213);
+  padding: 8px 14px;
+  border-radius: 8px;
   width: 100%;
-  height: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #f2f2f2;
-  transform: rotateX(-90deg);
-  transform-origin: bottom;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card:hover .card__content {
-  transform: rotateX(0deg);
-}
-
-.card__title {
-  margin: 0;
-  font-size: 24px;
-  color: #333;
-  font-weight: 700;
-}
-
-.card:hover svg {
-  scale: 0;
-}
-
-.card__description {
-  margin: 10px 0 0;
-  font-size: 14px;
-  color: #777;
-  line-height: 1.4;
+  height: 50px;
 }
 
 
+.dform textarea {
+  border-radius: 8px;
+  height: 100px;
+  width: 100%;
+  resize: none;
+  outline: 0;
+  padding: 8px 14px;
+  border: 1px solid rgb(219, 213, 213);
+}
 
+.dform button {
+  align-self: flex-end;
+  padding: 8px;
+  outline: 0;
+  border: 0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: royalblue;
+  color: #fff;
+  cursor: pointer;
+}

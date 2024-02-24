@@ -11,16 +11,17 @@
     <main style="padding: 1.5rem; margin: 0 auto; max-width: 1300px">
       <h1>Welcome to Dashboard</h1>
       <% if (user) { %>
-          <p>Hello, <%= user.username %>!</p>
+          <p class="disc">Hello, <%= user.username %>!</p>
           <!-- Add event creation form -->
-          <h2>Create Event</h2>
-          <form action="/create-event" method="POST">
-              <div>
-                  <label for="eventName">Event Name</label>
-                  <input type="text" id="eventName" name="eventName" required>
-              </div>
-              <button type="submit">Create Event</button>
-          </form>
+
+
+        <form class="dform" action="/create-event" method="POST">
+            <div class="title"><h2>Create Event</h2></div>
+            <input type="text" placeholder="Event Name" class="input" id="eventName" name="eventName" required>
+            <textarea placeholder="Event Description"id="eventDesc" name="eventDesc" required></textarea>
+
+            <button>Submit</button>
+        </form>
 
           <!-- Display user's events -->
           <% if (userEvents.length > 0) { %>

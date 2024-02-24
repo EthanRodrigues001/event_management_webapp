@@ -6,10 +6,10 @@
               type: String,
               required: true
             },
-            // eventDescription: {
-            //   type: String,
-            //   required: true
-            // },
+            eventDescription: {
+              type: String,
+              required: true
+            },
             createdBy: {
               type: mongoose.Schema.Types.ObjectId,
               ref: 'User', 
@@ -18,6 +18,10 @@
             approved: {
               type: Boolean,
               default: false
+            },
+            pending: {
+              type: Boolean,
+              default: true
             },
             createdAt: {
               type: Date,

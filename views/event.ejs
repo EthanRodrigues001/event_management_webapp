@@ -4,27 +4,95 @@
     <link rel="stylesheet" href="/css/style.css">
     </head>
   <body>
-    
+    <%- include('parts/nav') %>
     <!-- dont edit this -->
-    <h1>All Events</h1>
+    <h1 class="paget">All Events</h1>
+      <div class="con center1">
     <% if (events.length > 0) { %>
-        <ul>
             <% events.forEach(event => { %>
-                <li><%= event.eventName %> (Created by <%= event.createdBy.username %>) [date:<%= event.createdAt %> Status:<%= event.approved %>]</li>
+
+              <div class="card">
+                <a href="/events/<%= event.eventName %>">
+               <div class="cheader">
+                  <p>Name:<%= event.eventName %></p>
+                  <div class="ac"><%= event.createdAt %></div>
+               </div>
+                <div class="cmain">
+                  <% if (event.eventDescription) { %>
+                      <p>Description: <%= event.eventDescription %></p>
+                  <% } else { %>
+                      <p>Description: None</p>
+                  <% } %>
+                  <p>By : <%= event.createdBy.username %></p>
+                </div>
+                <% if(event.approved) {%>
+                <div class="cfooter a1">
+                <div class="a1">
+                Approved</div>    
+                </div>
+                  <% } else if(event.pending) {%>
+                  <div class="cfooter a2">
+                  <div class="a2">
+                  Pending</div>    
+                  </div>
+                  <% } else {%>
+                    <div class="cfooter a3">
+                    <div class="a3">
+                    Disapproved</div>    
+                    </div>
+                    <% }%>
+                       </a>
+              </div>
+                     
             <% }); %>
-        </ul>
     <% } else { %>
+      
         <p>No events available.</p>
+      
     <% } %>
-     
+      </div>
+<!-- <div class="con center1">
+      <div class="card">
+       <div class="cheader">
+          <p>Runtime</p>
+          <a href="#">Details</a>
+       </div>
+        <div class="cmain">
+          <p>42 <a href="#">ms</a></p>
+        </div>
+        <div class="cfooter a1">
+          <div class="a1">
+        Approved</div>
+        </div>
+      </div>
+  <div class="card">
+   <div class="cheader">
+      <p>Runtime</p>
+      <a href="#">Details</a>
+   </div>
+    <div class="cmain">
+      <p>42 <a href="#">ms</a></p>
+    </div>
+    <div class="cfooter a3">
+      <div class="a3">
+    Approved</div>
+    </div>
+  </div>
+  <div class="card">
+   <div class="cheader">
+      <p>Runtime</p>
+      <a href="#">Details</a>
+   </div>
+    <div class="cmain">
+      <p>42 <a href="#">ms</a></p>
+    </div>
+    <div class="cfooter a3">
+      <div class="a2">
+    Approved</div>
+    </div>
+  </div>
+  </div> -->
       <!-- temporary -->
       
-      <!-- <div class="card">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path></svg>
-        <div class="card__content">
-          <p class="card__title">Hackathon</p>
-          <p class="card__description">A social coding event that brings computer programmers and other interested people together to improve upon or build a new software program.</p>
-        </div>
-      </div> -->
     </body>
 </html>

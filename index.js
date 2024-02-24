@@ -79,6 +79,27 @@ app.get('/events', async (req, res) => {
   }
 });
 
+app.get('/events/:eventName', async (req, res) => {
+  try {
+
+    const eventName = req.params.eventName;
+
+   
+    const event = await Event.findOne({ eventName }).populate('createdBy');
+
+    
+    if (!event) {
+      return res.status(404).send('Event not found');
+    }
+
+   
+    res.render('eventname', { event ,user: req.user });
+  } catch (error) {
+    console.error('Error fetching event:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 
 
 app.get('/register', (req, res) => {
