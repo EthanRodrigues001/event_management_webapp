@@ -32,6 +32,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.urlencoded({ extended: true }));
 
+app.set("views", path.join(__dirname, "views"));
+
 //session
 app.use(session({
   secret: "comp_2.0",
