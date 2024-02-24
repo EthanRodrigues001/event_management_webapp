@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>
+      Dash
+    </title>
+     <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <%- include('parts/nav') %>
+    <!-- Page  -->
+    <main style="padding: 1.5rem; margin: 0 auto; max-width: 1300px">
+      <h1>Welcome to Dashboard</h1>
+      <% if (user) { %>
+          <p>Hello, <%= user.username %>!</p>
+          <!-- Add event creation form -->
+          <h2>Create Event</h2>
+          <form action="/create-event" method="POST">
+              <div>
+                  <label for="eventName">Event Name</label>
+                  <input type="text" id="eventName" name="eventName" required>
+              </div>
+              <button type="submit">Create Event</button>
+          </form>
+
+          <!-- Display user's events -->
+          <% if (userEvents.length > 0) { %>
+              <h2>Your Events</h2>
+              <ul>
+                  <% userEvents.forEach(event => { %>
+                      <li><%= event.eventName %> (Created on <%= event.createdAt %>)</li>
+                  <% }); %>
+              </ul>
+          <% } else { %>
+              <p>You haven't created any events yet.</p>
+          <% } %>
+
+          <a href="/logout">Logout</a>
+      <% } else { %>
+          <p>Please <a href="/login">login</a> to view this page.</p>
+      <% } %>
+        
+      </main>
+  </body>
+</html>
