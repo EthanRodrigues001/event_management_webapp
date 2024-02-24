@@ -170,6 +170,7 @@ app.post('/create-event', async (req, res) => {
     // Create the event
     const newEvent = new Event({
       eventName: req.body.eventName,
+      eventDescription: req.body.eventDesc,
       createdBy: req.user._id // Assuming req.user contains the authenticated user
     });
 
