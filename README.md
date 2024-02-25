@@ -55,7 +55,7 @@ The mentoring sessions were incredibly valuable. Our mentor shared extensive kno
 
 https://youtu.be/WSMQBpjrvww
 
-### It is also hosted on veercel
+### It is also hosted on vercel
 
 https://event-management-webapp-two.vercel.app/
 
