@@ -10,37 +10,64 @@
     <%- include('parts/nav') %>
     <!-- Page  -->
     <main style="padding: 1.5rem; margin: 0 auto; max-width: 1300px">
-    
-      <div class="card">
-       <div class="cheader">
-          <p>Name:<%= event.eventName %></p>
-          <div class="ac"><%= event.createdAt %></div>
-       </div>
-        <div class="cmain">
-          <% if (event.eventDescription) { %>
-              <p>Description: <%= event.eventDescription %></p>
-          <% } else { %>
-              <p>Description: None</p>
-          <% } %>
-          <p>By : <%= event.createdBy.username %></p>
-        </div>
-        <% if(event.approved) {%>
-        <div class="cfooter a1">
-        <div class="a1">
-        Approved</div>    
-        </div>
-          <% } else if(event.pending) {%>
-          <div class="cfooter a2">
-          <div class="a2">
-          Pending</div>    
-          </div>
-          <% } else {%>
-            <div class="cfooter a3">
-            <div class="a3">
-            Disapproved</div>    
+
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;500;700&display=swap" rel="stylesheet">
+      </head>
+
+      <body>
+        <main class="container3"><!-- Container start here -->
+          <div class="card3"><!-- Card start here -->
+
+
+            <div class="card__main"><!-- Card main start here -->
+              <div class="card__content"><!-- Card content start here -->
+                <h1 class="card__title">
+                  Name:<%= event.eventName %>
+                </h1>
+                <p class="card__p">
+                  <%= event.eventDescription %>
+                </p>
+              </div><!-- Card content end here -->
+
+              <div class="card__user"><!-- Card user start here -->
+
+                <div class="user">
+
+                  <div class="user__info">
+                    <p>By : <%= event.createdBy.username %></p>
+                    <p><%= event.createdAt %></p>
+                  </div>
+                </div>
+
+                <div class="user">
+
+                  <div class="user__info">
+                    <p>Status</p>
+                    <p>
+                    <% if(event.approved) {%>
+
+                    Approved   
+              
+                      <% } else if(event.pending) {%>
+               
+                      Pending  
+                   
+                      <% } else {%>
+             
+                        Disapproved   
+              
+                        <% }%>
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+  
             </div>
-            <% }%>
-      </div>
+
+          </div>
+        </main>
     </main>
 
 

@@ -70,7 +70,7 @@ const authenticateAdmin = (req, res, next) => {
   const user = auth(req);
 
   // Check if the user exists and has the correct credentials
-  if (user && user.name === 'adminn' && user.pass === 'password') {
+  if (user && user.name === process.env['username'] && user.pass === process.env['password']) {
     return next(); // Continue to the next middleware or route handler
   }
 
