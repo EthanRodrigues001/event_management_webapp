@@ -43,3 +43,7 @@ Members:-
 3. Allen
 
 Event : Agnethon
+
+## Mentor Feedback
+
+The mentoring sessions were incredibly valuable. Our mentor shared extensive knowledge about website development, emphasizing creativity. During the first session, we focused on enhancing the frontend to make it more appealing. In the subsequent session, we strengthened the backend. Identifying flaws in our website allowed us to address them effectively. 🌟

@@ -64,7 +64,7 @@ document.addEventListener("keydown", (e) => {
 // toggle hamburger menu
 hamburgerBtn.addEventListener("click", toggleHamburger);
 
-// event
+// event//
 
 document.addEventListener('DOMContentLoaded', (event) => {
 
@@ -131,3 +131,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
     item.addEventListener('dragend', handleDragEnd, false);
   });
 });
+
+// home page
+
+var text = document.getElementById('text');
+var stars = document.getElementById('stars');
+var moon = document.getElementById('moon');
+var mountains_behind = document.getElementById('mountains_behind');
+var mountains_front = document.getElementById('mountains_front');
+
+window.addEventListener('scroll', function () {
+  var value = window.scrollY;
+  text.style.marginRight = value * 4 + 'px';
+  text.style.marginTop = value * 1.5 + 'px';
+  stars.style.left = value * 0.25 + 'px';
+  moon.style.top = value * 1.05 + 'px';
+  mountains_behind.style.top = value * 0.5 + 'px';
+  mountains_front.style.top = value * 0 + 'px';
+})

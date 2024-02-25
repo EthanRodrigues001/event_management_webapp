@@ -8,7 +8,6 @@
             },
             eventDescription: {
               type: String,
-              required: true
             },
             createdBy: {
               type: mongoose.Schema.Types.ObjectId,

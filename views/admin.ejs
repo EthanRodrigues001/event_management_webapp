@@ -1,0 +1,91 @@
+<html>
+<head>
+  <title>
+    Admin Page
+  </title>
+   <link rel="stylesheet" href="/css/style.css">
+  <%- include('parts/head') %>
+</head>
+  <body>
+    <%- include('parts/nav') %>
+    <!-- Page  -->
+    <main style="padding: 1.5rem; margin: 0 auto; max-width: 1300px">
+      <!-- table -->
+      
+      <div class="center2">
+        <table>
+          <caption>Users Data</caption>
+          <thead>
+            <style>
+              border-radius:10px;
+            </style>
+            <tr>
+              <th scope="col">Users</th>
+              <th scope="col">Admin</th>
+              <th scope="col">Appoint as admin</th>
+              <th scope="col">Delete User</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (users.length > 0) { %>
+              <% users.forEach(user => { %>
+            <tr>
+              <td data-label=""><%= user.username %></td>
+              <td data-label=""><%= user.admin %></td>
+              <td data-label="">
+                <% if (!user.admin) { %>
+                  <form action="/admin/toggle-admin/<%= user._id %>" method="POST">
+                    <button type="submit" class="copy">
+                      <span>
+
+                        <span class="material-symbols-outlined">
+                        add
+                        </span>
+                      </span>
+                    </button>
+                  </form>
+                <% } else { %>
+                  <form action="/admin/toggle-admin/<%= user._id %>" method="POST">
+                    <button type="submit" class="copy">
+                      <span>
+
+                        <span class="material-symbols-outlined">
+                        remove
+                        </span>
+                      </span>
+                    </button>
+                  </form>
+                <% } %>
+              </td>
+              <td data-label="">
+                <form action="/admin/delete-user/<%= user._id %>" method="POST">
+                  <button type="submit" class="copy">
+                    <span>
+
+                      <span class="material-symbols-outlined">
+                      delete
+                      </span>
+                    </span>
+                  </button>
+                </form>
+              </td>
+            </tr>
+                        <% }); %>
+                <% } else { %>
+                    <p>No Users available.</p>
+                  <% } %>
+
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+
+
+
+  </body>
+</html>
+
+
+

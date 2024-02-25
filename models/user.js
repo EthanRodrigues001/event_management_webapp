@@ -9,7 +9,11 @@ const userSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Event'
     }
-  ]
+  ],
+  admin: {
+    type: Boolean,
+    default: false
+  },
 });
 
 userSchema.plugin(passportLocalMongoose);
