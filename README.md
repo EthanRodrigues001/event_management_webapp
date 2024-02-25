@@ -54,3 +54,12 @@ The mentoring sessions were incredibly valuable. Our mentor shared extensive kno
 ## Preview
 
 https://youtu.be/WSMQBpjrvww
+
+### It is also hosted on veercel
+
+https://event-management-webapp-two.vercel.app/
+
+Admin Details:-
+
+1. Username: admin
+2. Password : pass1234
