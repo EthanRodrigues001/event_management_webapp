@@ -14,6 +14,7 @@
     "@types/node": "^18.0.6",
     "basic-auth": "^2.0.1",
     "body-parser": "^1.20.2",
+    "connect-mongo": "^5.1.0",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-session": "^1.18.0",

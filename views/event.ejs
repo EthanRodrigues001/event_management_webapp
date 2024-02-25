@@ -27,37 +27,92 @@
                   <% } %>
                   <p>By : <%= event.createdBy.username %></p>
                 </div>
+                    
                 <% if(event.approved) {%>
-                <div class="cfooter a1 container1">
+                  <div class="cfooter a1 container1">
+
                 <div class="a1">
                 Approved</div>    
-                  <div >
-                    test
+                  <div class="ev">
+                    <% if (user && user.admin) { %>
+                        <!-- If user is admin, render approve/disapprove buttons -->
+                        <form action="/events/<%= event._id %>/approve" method="POST">
+                            <button type="submit" class="copy">                                 <span>                                     <span class="material-symbols-outlined">
+                              done
+                              </span>                                </span>                               </button>
+                        </form>
+                        <form action="/events/<%= event._id %>/disapprove" method="POST">
+                            <button type="submit" class="copy">                                 <span class="material-symbols-outlined">
+                            close
+                            </span>                                </span>                               </button>
+                        </form>
+                    <% } %>
                   </div>
+                    
                 </div>
 
                   <% } else if(event.pending) {%>
-                  <div class="cfooter a2">
+                    <div class="cfooter a2 container1">
                   <div class="a2">
-                  Pending</div>    
-                  </div>
+                  Pending</div>
+                      <div class="ev">
+                        
+                        <% if (user && user.admin) { %>
+                            <!-- If user is admin, render approve/disapprove buttons -->
+                            <form action="/events/<%= event._id %>/approve" method="POST">
+                                <button type="submit" class="copy">                                 <span>                                     <span class="material-symbols-outlined">
+                                done
+                                </span>                                 </span>                               </button>
+                            </form>
+                            <form action="/events/<%= event._id %>/disapprove" method="POST">
+                                <button type="submit" class="copy">                                <span class="material-symbols-outlined">
+                                  close
+                                  </span>                             </span>                               </button>
+                            </form>
+                        <% } %>
+                      </div>
+                      </div>
+                    
+                  
                   <% } else {%>
-                    <div class="cfooter a3">
+                    <div class="cfooter a3 container1">
                     <div class="a3">
-                    Disapproved</div>    
-                    </div>
+                    Disapproved</div>  
+                      <div class="ev">
+                        <% if (user && user.admin) { %>
+                            <!-- If user is admin, render approve/disapprove buttons -->
+                          <!-- Approve Button Form -->
+                          <form action="/events/<%= event._id %>/approve" method="POST">
+                              <input type="hidden" name="action" value="approve">
+                              <button type="submit" class="copy">
+                                  <span>
+                                      <span class="material-symbols-outlined">
+                                          done
+                                      </span>
+                                  </span>
+                              </button>
+                          </form>
+
+                          <!-- Disapprove Button Form -->
+                          <form action="/events/<%= event._id %>/disapprove" method="POST">
+                              <input type="hidden" name="action" value="disapprove">
+                              <button type="submit" class="copy">
+                                  <span>
+                                      <span class="material-symbols-outlined">
+                                          close
+                                      </span>
+                                  </span>
+                              </button>
+                          </form>
+
+                        <% } %>
+                      </div>
+                      </div>
+                    
                     <% }%>
                        </a>
               </div>
-                      <% if (user && user.admin) { %>
-                          <!-- If user is admin, render approve/disapprove buttons -->
-                          <form action="/events/<%= event._id %>/approve" method="POST">
-                              <button type="submit" name="action" value="approve">Approve</button>
-                          </form>
-                          <form action="/events/<%= event._id %>/approve" method="POST">
-                              <button type="submit" name="action" value="disapprove">Disapprove</button>
-                          </form>
-                      <% } %>
+
             <% }); %>
     <% } else { %>
       
@@ -66,48 +121,7 @@
     <% } %>
       </div>
     </main>
-<!-- <div class="con center1">
-      <div class="card">
-       <div class="cheader">
-          <p>Runtime</p>
-          <a href="#">Details</a>
-       </div>
-        <div class="cmain">
-          <p>42 <a href="#">ms</a></p>
-        </div>
-        <div class="cfooter a1">
-          <div class="a1">
-        Approved</div>
-        </div>
-      </div>
-  <div class="card">
-   <div class="cheader">
-      <p>Runtime</p>
-      <a href="#">Details</a>
-   </div>
-    <div class="cmain">
-      <p>42 <a href="#">ms</a></p>
-    </div>
-    <div class="cfooter a3">
-      <div class="a3">
-    Approved</div>
-    </div>
-  </div>
-  <div class="card">
-   <div class="cheader">
-      <p>Runtime</p>
-      <a href="#">Details</a>
-   </div>
-    <div class="cmain">
-      <p>42 <a href="#">ms</a></p>
-    </div>
-    <div class="cfooter a3">
-      <div class="a2">
-    Approved</div>
-    </div>
-  </div>
-  </div> -->
-      <!-- temporary -->
+
       
     </body>
 </html>

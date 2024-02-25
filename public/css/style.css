@@ -783,7 +783,7 @@ table th {
   }
 
   table thead {
-    border-radius: 8px;
+    
     border: none;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -1013,4 +1013,11 @@ section img {
   align-items: center;
   justify-content: space-between;
   column-gap: 2rem;
+}
+
+.ev {
+    display: flex;
+    align-items: center;
+  column-gap: 1rem;
+  }
 }

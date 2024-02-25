@@ -3,7 +3,7 @@ const path = require("path");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const port = 8080;
-const session = require("express-session");
+const session = require('express-session');
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user.js");
@@ -14,6 +14,8 @@ const express = require("express");
 const app = express();
 
 // Connect to MongoDB
+
+
 
 mongoose
   .connect(process.env["db"], {
@@ -40,8 +42,13 @@ app.use(
     secret: "comp_2.0",
     resave: false,
     saveUninitialized: false,
+ 
+    cookie: {
+        maxAge: 60000 // Session expires after 1 minute of inactivity (in milliseconds)
+    }
   }),
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -314,7 +321,7 @@ app.post("/delete-event/:eventId", async (req, res) => {
   }
 });
 
-// Define a route to approve or disapprove an event
+// Define a route to approve an event
 app.post('/events/:eventId/approve', async (req, res) => {
     try {
         // Ensure user is authenticated and is an admin
@@ -333,14 +340,46 @@ app.post('/events/:eventId/approve', async (req, res) => {
             return res.status(404).send('Event not found');
         }
 
-        // Update the event based on the action
-        if (req.body.action === 'approve') {
+
             event.approved = true;
             event.pending = false;
-        } else if (req.body.action === 'disapprove') {
+
+
+        // Save the updated event
+        await event.save();
+
+        // Redirect back to the events page or any other appropriate route
+        res.redirect('/events');
+    } catch (error) {
+        console.error('Error approving/disapproving event:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Define a route to disapprove an event
+app.post('/events/:eventId/disapprove', async (req, res) => {
+    try {
+        // Ensure user is authenticated and is an admin
+        if (!req.isAuthenticated() || !req.user.admin) {
+            return res.status(403).send('Unauthorized');
+        }
+
+        // Get the event ID from the URL parameters
+        const eventId = req.params.eventId;
+
+        // Find the event by ID
+        const event = await Event.findById(eventId);
+
+        // Ensure the event exists
+        if (!event) {
+            return res.status(404).send('Event not found');
+        }
+
+        // Update the event based on the action
+
             event.approved = false;
             event.pending = false;
-        }
+
 
         // Save the updated event
         await event.save();
