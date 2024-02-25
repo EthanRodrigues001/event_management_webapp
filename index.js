@@ -42,10 +42,7 @@ app.use(
     secret: "comp_2.0",
     resave: false,
     saveUninitialized: false,
- 
-    cookie: {
-        maxAge: 60000 // Session expires after 1 minute of inactivity (in milliseconds)
-    }
+
   }),
 );
 
@@ -396,4 +393,22 @@ app.post('/events/:eventId/disapprove', async (req, res) => {
 //listen
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
+});
+
+
+process.on('unhandledRejection', (reason, p) => {
+  console.log(' [antiCrash] :: Unhandled Rejection/Catch');
+  console.log(reason, p);
+});
+process.on('uncaughtException', (err, origin) => {
+  console.log(' [antiCrash] :: Uncaught Exception/Catch');
+  console.log(err, origin);
+});
+process.on('uncaughtExceptionMonitor', (err, origin) => {
+  console.log(' [antiCrash] :: Uncaught Exception/Catch (MONITOR)');
+  console.log(err, origin);
+});
+process.on('multipleResolves', (type, promise, reason) => {
+  console.log(' [antiCrash] :: Multiple Resolves');
+  console.log(type, promise, reason);
 });

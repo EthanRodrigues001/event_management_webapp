@@ -4,7 +4,10 @@
 ## How to Run
 
 1. Add a .env file
-2. ```db=your mongodb database uri```
+2. Put 
+```db=your mongodb database uri```
+```username=your admin portal username```
+```password=your admin portal password``` in .env file.
 3. Type `npm i` in the terminal to install the required package
 4. Type `npm rum start` in the terminal to Run the project
 
@@ -30,12 +33,12 @@
 To run this project, you will need to add the following environment variables to your .env file
 
 `db`
-
-
+`username`
+`password`
 
 ## Team Details
 
-Team Name : Comp 2.0
+### Team Name : Comp 2.0
 
 Members:-
 1. Ethan Rodrigues
@@ -47,3 +50,7 @@ Event : Agnethon
 ## Mentor Feedback
 
 The mentoring sessions were incredibly valuable. Our mentor shared extensive knowledge about website development, emphasizing creativity. During the first session, we focused on enhancing the frontend to make it more appealing. In the subsequent session, we strengthened the backend. Identifying flaws in our website allowed us to address them effectively. 🌟
+
+## Preview
+
+https://youtu.be/WSMQBpjrvww
