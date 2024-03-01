@@ -10,81 +10,72 @@
   <body>
     <%- include('parts/nav') %>
     <!-- Page  -->
-    <main style="padding: 1.5rem; margin: 0 auto; max-width: 1300px">
-      <h1>Welcome to Dashboard</h1>
-      <% if (user) { %>
+      <main style="padding: 1.5rem; margin: 0 auto; max-width: 1300px;">
+        <h1>Welcome to Dashboard</h1>
+        <% if (user) { %>
           <p class="disc">Hello, <%= user.username %>!</p>
           <!-- Add event creation form -->
-
-        <div class="center">
-        <form class="dform" action="/create-event" method="POST">
-            <div class="title"><h2 style="color:white;">Create Event</h2></div>
-            <input type="text" placeholder="Event Name" class="input" id="eventName" name="eventName" required>
-            <textarea placeholder="Event Description"id="eventDesc" name="eventDesc" required></textarea>
-
-            <button>Submit</button>
-        </form>
-        </div>
+          <div class="center">
+            <form class="dform" action="/create-event" method="POST">
+              <div class="title">
+                <h2 style="color:white;">Create Event</h2>
+              </div>
+              <input type="text" placeholder="Event Name" class="input" id="eventName" name="eventName" required>
+              <textarea placeholder="Event Description" id="eventDesc" name="eventDesc" required></textarea>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
 
           <!-- Display user's events -->
-
-        <div class="center2">
-          <table>
-            <caption>Your Events</caption>
-            <thead>
-              <tr>
-                <th scope="col">Event</th>
-                <th scope="col">Date</th>
-                <th scope="col">Status</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-          <% if (userEvents.length > 0) { %>
-              <ul>
+          <div class="center2">
+            <table>
+              <caption>Your Events</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Event</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (userEvents.length > 0) { %>
                   <% userEvents.forEach(event => { %>
-                   
-                        <tbody>
-                          <tr>
-                            <td data-label="Account"><%= event.eventName %></td>
-                            <td data-label="Due Date"><%= event.createdAt %></td>
-                            <td data-label="Amount">
-                              <% if(event.approved) {%>
-                              Approved 
-                                <% } else if(event.pending) {%>
-                                Pending
-                                <% } else {%>
-                                  Disapproved</div>    
-                                  <% }%>
-                            </td>
-                                    
-
-
-                            <td data-label="Period">                        <form action="/delete-event/<%= event._id %>" method="POST">
-                              <button type="submit" class="copy">
-                                <span>
- 
-                                  <span class="material-symbols-outlined">
-                                  delete
-                                  </span>
-                                </span>
-                              </button>
-                            </form></td>
-                          </tr>
-                        </tbody>
-
-                    
+                    <tr>
+                      <td><%= event.eventName %></td>
+                      <td><%= event.createdAt %></td>
+                      <td>
+                        <% if(event.approved) { %>
+                          Approved
+                        <% } else if(event.pending) { %>
+                          Pending
+                        <% } else { %>
+                          Disapproved
+                        <% } %>
+                      </td>
+                      <td>
+                        <form action="/delete-event/<%= event._id %>" method="POST">
+                          <button type="submit" class="copy">
+                            <span class="material-symbols-outlined">
+                              delete
+                            </span>
+                          </button>
+                        </form>
+                      </td>
+                    </tr>
                   <% }); %>
-              </ul>
-          <% } else { %>
-              <p>You haven't created any events yet.</p>
-          <% } %>
-      <% } else { %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="4">You haven't created any events yet.</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        <% } else { %>
           <p>Please <a href="/login">login</a> to view this page.</p>
-      <% } %>
-          </table>
-        </div>
+        <% } %>
       </main>
-
 <!-- table -->
 
        

@@ -1,7 +1,7 @@
 </html>
 
 <head>
-  <title>register</title>
+  <title>Register</title>
   <link rel="stylesheet" href="/css/style.css">
   <%- include('parts/head') %>
 </head>
@@ -10,6 +10,11 @@
   <%- include('parts/nav') %>
     <main style="padding: 1.5rem; margin: 0 auto; height:100%; max-width: 100%">
  <div class="center"> 
+   
+   <% if (error) { %>
+     <p><%= error %></p>
+   <% } %>
+     
    <form class="form" action="/register" method="POST">
      <p class="form-title">Register</p>
       <div class="input-container">

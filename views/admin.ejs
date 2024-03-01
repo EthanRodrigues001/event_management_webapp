@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>
-    Admin Page
+    Admin Portal
   </title>
    <link rel="stylesheet" href="/css/style.css">
   <%- include('parts/head') %>
@@ -31,7 +31,10 @@
               <% users.forEach(user => { %>
             <tr>
               <td data-label=""><%= user.username %></td>
-              <td data-label=""><%= user.admin %></td>
+              <td data-label="">
+                <%= user.admin ? 'Yes' : 'No' %>
+              </td>
+
               <td data-label="">
                 <% if (!user.admin) { %>
                   <form action="/admin/toggle-admin/<%= user._id %>" method="POST">
