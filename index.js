@@ -143,10 +143,10 @@ app.post("/register", async (req, res) => {
   try {
     const existingUser = await User.findOne({ username: req.body.username });
     if (existingUser) {
-      return res.render("register", { error: "Username already exists." });
+      return res.render("register", { user: req.user,error: "Username already exists." });
     }
     if (req.body.password.includes('\u0000')) {
-      return res.render("register", { error: "Password cannot contain null characters." });
+      return res.render("register", { user: req.user,error: "Password cannot contain null characters." });
     }
     const newUser = await User.register(
       new User({ username: req.body.username }),
